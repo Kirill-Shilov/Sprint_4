@@ -5,6 +5,9 @@ from selenium.webdriver.support import expected_conditions
 
 
 class MainPage:
+
+    order_button_top = [By.XPATH, "//button[@class='Button_Button__ra12g' and text()='Заказать']"]
+    order_button_bottom = [By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_Middle__1CSJM')]"]
     
     url = "https://qa-scooter.praktikum-services.ru/"
 
