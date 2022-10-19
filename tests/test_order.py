@@ -3,6 +3,7 @@ from pages.order_page import OrderPage
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.options import Options
 
 
 class TestOrder:
@@ -13,7 +14,9 @@ class TestOrder:
     @classmethod
     def setup_class(cls):
         service = Service(executable_path=GeckoDriverManager().install())
-        driver = webdriver.Firefox(service=service)
+        options = Options()
+        options.add_argument('--headless')
+        driver = webdriver.Firefox(service=service, options=options)
         cls.driver = driver
 
 

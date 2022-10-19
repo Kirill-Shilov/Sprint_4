@@ -3,6 +3,7 @@ from pages.main_page import MainPage
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.options import Options
 
 
 class TestDropdownList:
@@ -13,7 +14,9 @@ class TestDropdownList:
     @classmethod
     def setup_class(cls):
         service = Service(executable_path=GeckoDriverManager().install())
-        driver = webdriver.Firefox(service=service)
+        options = Options()
+        options.add_argument('--headless')
+        driver = webdriver.Firefox(service=service, options=options)
         cls.driver = driver
 
 
