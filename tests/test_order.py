@@ -1,3 +1,4 @@
+import allure
 from pages.order_page import OrderPage
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
@@ -22,6 +23,7 @@ class TestOrder:
         self.page.get_url()
 
 
+    @allure.description('Позитивный тест заказа с первым набором данных')
     def test_1(self):
         page = self.page
         page.close_cookie_popup()
@@ -35,6 +37,7 @@ class TestOrder:
         page.wait_for_success()
 
 
+    @allure.description('Позитивный тест заказа со вторым набором данных')
     def test_2(self):
         page = self.page
         page.close_cookie_popup()
