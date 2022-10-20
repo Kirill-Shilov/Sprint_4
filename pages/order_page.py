@@ -1,17 +1,18 @@
 import allure
+from pages.main_page import MainPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.keys import Keys
 import random
-
 from faker import Faker
 
 
 class OrderPage:
 
     url = "https://qa-scooter.praktikum-services.ru/order"
+    start_url = "https://qa-scooter.praktikum-services.ru"
     #first page
     cookie_button = [By.XPATH, "//button[@class='App_CookieButton__3cvqF']"]
     name_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Имя']"]
@@ -61,6 +62,16 @@ class OrderPage:
             self.driver.find_element(*self.cookie_button).click()
         except:
             pass
+
+    
+    @allure.step('Нажатие на верхнюю кнопку "Заказать"')
+    def use_top_order_button(self):
+        self.driver.find_element(*MainPage.order_button_top).click()
+
+
+    @allure.step('Нажатие на нижнюю кнопку "Заказать"')
+    def use_bottom_order_button(self):
+        self.driver.find_element(*MainPage.order_button_bottom).click()
 
 
     @allure.step('Заполнени полей первой страницы заказа')
@@ -128,5 +139,5 @@ class OrderPage:
         
     @allure.step('Переход на главную страницу сайта')
     def get_url(self):
-        self.driver.get(self.url)
+        self.driver.get(self.start_url)
 

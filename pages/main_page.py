@@ -9,7 +9,7 @@ class MainPage:
     order_button_top = [By.XPATH, "//button[@class='Button_Button__ra12g' and text()='Заказать']"]
     order_button_bottom = [By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_Middle__1CSJM')]"]
     
-    url = "https://qa-scooter.praktikum-services.ru/"
+    url = "https://qa-scooter.praktikum-services.ru"
 
     dropdown_element_0 = [By.XPATH, "//div[@id='accordion__heading-0']/parent::div"]
     dropdown_element_1 = [By.XPATH, "//div[@id='accordion__heading-1']/parent::div"]
@@ -57,7 +57,6 @@ class MainPage:
         element = self.driver.find_element(*element_locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         self.actions.move_to_element(element).click(element).perform()
-        text_element = self.driver.find_element(*text_locator)
         WebDriverWait(self.driver, 3).until(expected_conditions.
             text_to_be_present_in_element(text_locator, text))
         return True

@@ -30,6 +30,7 @@ class TestOrder:
     def test_1(self):
         page = self.page
         page.close_cookie_popup()
+        page.use_top_order_button()
         page.fill_fields_1(30, page.street_address_1)
         page.place_order_1()
         page.fill_fields_2(page.time_rent_select_1,
@@ -44,6 +45,7 @@ class TestOrder:
     def test_2(self):
         page = self.page
         page.close_cookie_popup()
+        page.use_bottom_order_button()
         page.fill_fields_1(60, page.street_address_2)
         page.place_order_1()
         page.fill_fields_2(page.time_rent_select_2,
