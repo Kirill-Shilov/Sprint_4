@@ -65,7 +65,7 @@ class TestDropdownList:
         assert text 
 
 
-    @allure.title("Проверка 'Вы привоите зарядку вместе с самокатом?'")
+    @allure.title("Проверка 'Вы привозите зарядку вместе с самокатом?'")
     def test_check_charge(self):
         text = self.page.check_element(self.page.dropdown_element_5,
                                   self.page.element_text_5,

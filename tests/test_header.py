@@ -31,6 +31,7 @@ class TestHeader:
 
 
     @allure.description('Неосилил тест, дзен блокиркует ботов')
+    @allure.title('Неосилил')
     def test_1(self):
         page = self.page
         page.check_redirect_to_yandex()
