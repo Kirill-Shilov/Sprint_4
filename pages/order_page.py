@@ -19,6 +19,8 @@ class OrderPage:
     surename_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Фамилия']"]
     address_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Адрес: куда привезти заказ']"]
     station_field = [By.XPATH, "//input[@class = 'select-search__input' and @placeholder = '* Станция метро']"]
+    firs_station_choise = [By.XPATH, "(//button[@class='Order_SelectOption__82bhS select-search__option'])[1]"]
+    second_station_choise = [By.XPATH, "(//button[@class='Order_SelectOption__82bhS select-search__option'])[5]"]
     phone_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Телефон: на него позвонит курьер']"]
     next_button = [By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and text()='Далее']"]
     #second page
@@ -75,7 +77,7 @@ class OrderPage:
 
 
     @allure.step('Заполнени полей первой страницы заказа')
-    def fill_fields_1(self, offset, street_address):
+    def fill_fields_1(self, station, street_address):
         d = self.driver
         a = self.action
         d.find_element(*self.name_field).send_keys(self.fake.first_name())
@@ -83,7 +85,8 @@ class OrderPage:
         d.find_element(*self.address_field).send_keys(street_address)
         dropdown = d.find_element(*self.station_field)
         a.move_to_element(dropdown).click().perform()
-        a.move_to_element_with_offset(dropdown, 0, offset).click().perform()
+        element = d.find_element(*station)
+        a.move_to_element(element).click().perform()
         d.find_element(*self.phone_field).send_keys(self.phone())
 
 

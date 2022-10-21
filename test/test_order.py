@@ -31,7 +31,7 @@ class TestOrder:
         page = self.page
         page.close_cookie_popup()
         page.use_top_order_button()
-        page.fill_fields_1(30, page.street_address_1)
+        page.fill_fields_1(page.firs_station_choise, page.street_address_1)
         page.place_order_1()
         page.fill_fields_2(page.time_rent_select_1,
                            page.comment_text_1,
@@ -47,7 +47,7 @@ class TestOrder:
         page = self.page
         page.close_cookie_popup()
         page.use_bottom_order_button()
-        page.fill_fields_1(60, page.street_address_2)
+        page.fill_fields_1(page.second_station_choise, page.street_address_2)
         page.place_order_1()
         page.fill_fields_2(page.time_rent_select_2,
                            page.comment_text_2,
