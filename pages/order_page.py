@@ -53,6 +53,16 @@ class OrderPage:
         self.action = ActionChains(driver)
 
 
+    def wait_presence(self, element):
+        WebDriverWait(self.driver, 5).until(
+                expected_conditions.presence_of_element_located(element))
+
+
+    def wait_visibility(self, element):
+        WebDriverWait(self.driver, 5).until(
+                expected_conditions.visibility_of_element_located(element))
+
+
     @allure.step('Генерация номера телефона')
     def phone(self):
         return '+7' + str(random.randint(0000000000, 10000000000))
@@ -95,8 +105,7 @@ class OrderPage:
         element = self.driver.find_element(*self.next_button)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         self.action.move_to_element(element).click().perform()
-        WebDriverWait(self.driver, 10).until(
-                expected_conditions.presence_of_element_located(self.header))
+        self.wait_presence(self.header)
 
 
     @allure.step('Заполнени полей второй страницы заказа')
@@ -106,16 +115,14 @@ class OrderPage:
         d.find_element(*self.time_delivery_field).send_keys(
                 str(self.fake.date_this_month(False, True)))
         d.find_element(*self.time_delivery_field).send_keys(Keys.ENTER)
-        WebDriverWait(d, 5).until(
-                expected_conditions.presence_of_element_located(self.time_rent_field))
+        self.wait_presence(self.time_rent_field)
         dropdown = d.find_element(*self.time_rent_field)
         a.move_to_element(dropdown).click().perform()
-        WebDriverWait(d, 5).until(
-                expected_conditions.presence_of_element_located(self.time_rent_select_1))
+        self.wait_presence(self.time_rent_select_1)
         select = d.find_element(*time_rent_select)
         a.move_to_element(select).click().perform()
         color_checkbox = d.find_element(*color)
-        WebDriverWait(d, 5).until(expected_conditions.presence_of_element_located(color))
+        self.wait_presence(color)
         a.move_to_element(color_checkbox).click().perform()
         d.find_element(*self.comment).send_keys(comment_text)
 
@@ -128,16 +135,13 @@ class OrderPage:
     @allure.step('Подтверждение заказа')
     def make_order(self):
         d = self.driver
-        WebDriverWait(d, 5).until(
-                expected_conditions.visibility_of_element_located(self.want_to_order))
+        self.wait_visibility(self.want_to_order)
         d.find_element(*self.yes_i_want).click()
 
 
     @allure.step('Ожидание сообщения об успешном создании заказа')
     def wait_for_success(self):
-        d = self.driver
-        WebDriverWait(d, 5).until(
-                expected_conditions.visibility_of_element_located(self.success))
+        self.wait_visibility(self.success)
 
         
     @allure.step('Переход на главную страницу сайта')
