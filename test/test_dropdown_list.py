@@ -15,7 +15,7 @@ class TestDropdownList:
     def setup_class(cls):
         service = Service(executable_path=GeckoDriverManager().install())
         options = Options()
-        options.add_argument('--headless')
+        options.headless = True
         driver = webdriver.Firefox(service=service, options=options)
         cls.driver = driver
 
