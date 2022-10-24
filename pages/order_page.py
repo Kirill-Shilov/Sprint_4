@@ -14,30 +14,30 @@ class OrderPage:
     url = "https://qa-scooter.praktikum-services.ru/order"
     start_url = "https://qa-scooter.praktikum-services.ru"
     #first page
-    cookie_button = [By.XPATH, "//button[@class='App_CookieButton__3cvqF']"]
-    name_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Имя']"]
-    surename_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Фамилия']"]
-    address_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Адрес: куда привезти заказ']"]
-    station_field = [By.XPATH, "//input[@class = 'select-search__input' and @placeholder = '* Станция метро']"]
-    firs_station_choise = [By.XPATH, "(//button[@class='Order_SelectOption__82bhS select-search__option'])[1]"]
-    second_station_choise = [By.XPATH, "(//button[@class='Order_SelectOption__82bhS select-search__option'])[5]"]
-    phone_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Телефон: на него позвонит курьер']"]
-    next_button = [By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and text()='Далее']"]
+    cookie_button = (By.XPATH, "//button[@class='App_CookieButton__3cvqF']")
+    name_field = (By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Имя']")
+    surename_field = (By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Фамилия']")
+    address_field = (By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Адрес: куда привезти заказ']")
+    station_field = (By.XPATH, "//input[@class = 'select-search__input' and @placeholder = '* Станция метро']")
+    firs_station_choise = (By.XPATH, "(//button[@class='Order_SelectOption__82bhS select-search__option'])[1]")
+    second_station_choise = (By.XPATH, "(//button[@class='Order_SelectOption__82bhS select-search__option'])[5]")
+    phone_field = (By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder = '* Телефон: на него позвонит курьер']")
+    next_button = (By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and text()='Далее']")
     #second page
-    header = [By.XPATH, "//div[@class='Order_Header__BZXOb' and text()='Про аренду']"]
-    time_delivery_field = [By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder='* Когда привезти самокат']"]
-    time_rent_field = [By.XPATH, "//div[@class='Dropdown-placeholder' and text()='* Срок аренды']"]
-    time_rent_select_1 = [By.XPATH, "//div[@class='Dropdown-menu']//div[1]"]
-    time_rent_select_2 = [By.XPATH, "//div[@class='Dropdown-menu']//div[2]"]
-    color_checkbox_1 = [By.XPATH, "//div[contains(@class, 'Order_Checkboxes__3lWSI')]/label[1]"]
-    color_checkbox_2 = [By.XPATH, "//div[contains(@class, 'Order_Checkboxes__3lWSI')]/label[2]"]
-    comment = [By.XPATH, "//div[@class='Input_InputContainer__3NykH']/input[contains(@class, 'Input_Input__1iN_Z') and @placeholder='Комментарий для курьера']"]
-    order_button = [By.XPATH, "//div[@class='Order_Buttons__1xGrp']/button[contains(@class, 'Button_Button__ra12g') and text()='Заказать']"]
+    header = (By.XPATH, "//div[@class='Order_Header__BZXOb' and text()='Про аренду']")
+    time_delivery_field = (By.XPATH, "//input[contains(@class, 'Input_Input__1iN_Z') and @placeholder='* Когда привезти самокат']")
+    time_rent_field = (By.XPATH, "//div[@class='Dropdown-placeholder' and text()='* Срок аренды']")
+    time_rent_select_1 = (By.XPATH, "//div[@class='Dropdown-menu']//div[1]")
+    time_rent_select_2 = (By.XPATH, "//div[@class='Dropdown-menu']//div[2]")
+    color_checkbox_1 = (By.XPATH, "//div[contains(@class, 'Order_Checkboxes__3lWSI')]/label[1]")
+    color_checkbox_2 = (By.XPATH, "//div[contains(@class, 'Order_Checkboxes__3lWSI')]/label[2]")
+    comment = (By.XPATH, "//div[@class='Input_InputContainer__3NykH']/input[contains(@class, 'Input_Input__1iN_Z') and @placeholder='Комментарий для курьера']")
+    order_button = (By.XPATH, "//div[@class='Order_Buttons__1xGrp']/button[contains(@class, 'Button_Button__ra12g') and text()='Заказать']")
     #third page
-    want_to_order = [By.XPATH, "//div[@class='Order_ModalHeader__3FDaJ']"]
-    yes_i_want = [By.XPATH, "//div[@class='Order_Buttons__1xGrp']/button[contains(@class, 'Button_Button__ra12g') and text()='Да']"]
+    want_to_order = (By.XPATH, "//div[@class='Order_ModalHeader__3FDaJ']")
+    yes_i_want = (By.XPATH, "//div[@class='Order_Buttons__1xGrp']/button[contains(@class, 'Button_Button__ra12g') and text()='Да']")
     #final page
-    success = [By.XPATH, "//div[@class='Order_ModalHeader__3FDaJ' and contains(text(), 'Заказ оформлен')]"]
+    success = (By.XPATH, "//div[@class='Order_ModalHeader__3FDaJ' and contains(text(), 'Заказ оформлен')]")
 
     #data
     street_address_1 = "наб. Медицинская, д. 19 к. 2"
@@ -75,7 +75,7 @@ class OrderPage:
         except:
             pass
 
-    
+
     @allure.step('Нажатие на верхнюю кнопку "Заказать"')
     def use_top_order_button(self):
         self.driver.find_element(*MainPage.order_button_top).click()
@@ -142,8 +142,9 @@ class OrderPage:
     @allure.step('Ожидание сообщения об успешном создании заказа')
     def wait_for_success(self):
         self.wait_visibility(self.success)
+        return True
 
-        
+
     @allure.step('Переход на главную страницу сайта')
     def get_url(self):
         self.driver.get(self.start_url)

@@ -1,4 +1,5 @@
 import allure
+import pytest
 from pages.order_page import OrderPage
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
@@ -11,18 +12,17 @@ class TestOrder:
     driver = None
 
 
-    @classmethod
-    def setup_class(cls):
+    @pytest.fixture(scope='function', autouse=True)
+    def setup_teardown(self):
         service = Service(executable_path=GeckoDriverManager().install())
         options = Options()
         options.headless = True
         driver = webdriver.Firefox(service=service, options=options)
-        cls.driver = driver
-
-
-    def setup_method(self):
+        self.driver = driver
         self.page = OrderPage(self.driver)
         self.page.get_url()
+        yield
+        driver.quit()
 
 
     @allure.description('Позитивный тест заказа с первым набором данных')
@@ -38,7 +38,7 @@ class TestOrder:
                            page.color_checkbox_1)
         page.place_order_2()
         page.make_order()
-        page.wait_for_success()
+        assert page.wait_for_success()
 
 
     @allure.description('Позитивный тест заказа со вторым набором данных')
@@ -54,9 +54,5 @@ class TestOrder:
                            page.color_checkbox_2)
         page.place_order_2()
         page.make_order()
-        page.wait_for_success()
+        assert page.wait_for_success()
 
-
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()
