@@ -1,28 +1,19 @@
 import allure
 import pytest
 from pages.order_page import OrderPage
-from selenium.webdriver.chrome.service import Service
-from selenium import webdriver
-from webdriver_manager.firefox import GeckoDriverManager
-from selenium.webdriver.firefox.options import Options
 
 
+@pytest.mark.usefixtures('setup_teardown')
 class TestOrder:
 
     driver = None
 
 
     @pytest.fixture(scope='function', autouse=True)
-    def setup_teardown(self):
-        service = Service(executable_path=GeckoDriverManager().install())
-        options = Options()
-        options.headless = True
-        driver = webdriver.Firefox(service=service, options=options)
-        self.driver = driver
+    def hadnle_setup_teardown(self, setup_teardown):
+        self.driver = setup_teardown
         self.page = OrderPage(self.driver)
         self.page.get_url()
-        yield
-        driver.quit()
 
 
     @allure.description('Позитивный тест заказа с первым набором данных')
