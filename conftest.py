@@ -5,7 +5,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.options import Options
 
 
-@pytest.fixture()
+@pytest.fixture(name='driver')
 def setup_teardown():
     service = Service(executable_path=GeckoDriverManager().install())
     options = Options()

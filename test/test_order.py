@@ -3,15 +3,15 @@ import pytest
 from pages.order_page import OrderPage
 
 
-@pytest.mark.usefixtures('setup_teardown')
+@pytest.mark.usefixtures('driver')
 class TestOrder:
 
     driver = None
 
 
     @pytest.fixture(scope='function', autouse=True)
-    def hadnle_setup_teardown(self, setup_teardown):
-        self.driver = setup_teardown
+    def hadnle_driver(self, driver):
+        self.driver = driver
         self.page = OrderPage(self.driver)
         self.page.get_url()
 
