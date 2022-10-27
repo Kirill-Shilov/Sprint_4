@@ -22,15 +22,16 @@ class Header:
     def check_redirect_to_mainpage(self):
         self.driver.get(self.test_url)
         self.driver.get(self.main_url)
-        WebDriverWait(self.driver, 5).until(
-                expected_conditions.url_to_be(self.main_url))
-        return True
+        try:
+            WebDriverWait(self.driver, 5).until(
+                    expected_conditions.url_to_be(self.main_url))
+            return True
+        except:
+            return False
 
 
     def check_redirect_to_yandex(self):
         self.driver.get(self.main_url)
-        WebDriverWait(self.driver, 5).until(
-                expected_conditions.url_to_be(self.main_url))
         self.driver.find_element(*self.yandex_logo).click()
         if len(self.driver.window_handles) == 2:
             return True

@@ -12,6 +12,7 @@ class TestOrder:
     @pytest.fixture(scope='function', autouse=True)
     def hadnle_driver(self, driver):
         self.driver = driver
+        self.driver.implicitly_wait(5)
         self.page = OrderPage(self.driver)
         self.page.get_url()
 

@@ -1,1 +1,0 @@
-{"uuid": "506968bd-0a2d-4d1d-801b-746c0a008540", "children": ["e1519fbf-0974-4556-aa54-767c6a221791"], "befores": [{"name": "hadnle_driver", "status": "passed", "steps": [{"name": "Переход на главную страницу сайта", "status": "passed", "start": 1666797340432, "stop": 1666797343839}], "start": 1666797340431, "stop": 1666797343840}], "start": 1666797340431, "stop": 1666797347541}

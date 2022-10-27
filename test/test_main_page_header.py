@@ -12,6 +12,7 @@ class TestHeader:
     @pytest.fixture(scope='function', autouse=True)
     def hadnle_setup_teardown(self, driver):
         self.driver = driver
+        self.driver.implicitly_wait(5)
         self.page = Header(self.driver)
         self.page.get_url()
 

@@ -57,9 +57,13 @@ class MainPage:
         element = self.driver.find_element(*element_locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         self.actions.move_to_element(element).click(element).perform()
-        WebDriverWait(self.driver, 5).until(expected_conditions.
-            text_to_be_present_in_element(text_locator, text))
-        return True
+        try:
+            WebDriverWait(self.driver, 5).until(expected_conditions.
+                text_to_be_present_in_element(text_locator, text))
+            return True
+        except:
+            return False
+
 
 
     def get_url(self):
