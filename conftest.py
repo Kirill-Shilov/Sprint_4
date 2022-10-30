@@ -13,3 +13,11 @@ def setup_teardown():
     driver = webdriver.Firefox(service=service, options=options)
     yield driver
     driver.quit()
+
+
+@pytest.fixture(name='page', scope='function', autouse=True)
+def hadnle_driver(classname, driver):
+    page = classname(driver)
+    page.get_url()
+    return page
+

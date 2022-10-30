@@ -65,7 +65,6 @@ class MainPage:
             return False
 
 
-
     def get_url(self):
         self.driver.get(self.url)
 

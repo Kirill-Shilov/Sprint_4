@@ -3,24 +3,16 @@ import pytest
 from pages.order_page import OrderPage
 
 
-@pytest.mark.usefixtures('driver')
+@pytest.mark.usefixtures('driver', 'page')
+@pytest.mark.parametrize('classname', [OrderPage])
 class TestOrder:
 
     driver = None
 
 
-    @pytest.fixture(scope='function', autouse=True)
-    def hadnle_driver(self, driver):
-        self.driver = driver
-        self.driver.implicitly_wait(5)
-        self.page = OrderPage(self.driver)
-        self.page.get_url()
-
-
     @allure.description('Позитивный тест заказа с первым набором данных')
     @allure.title('Первый набор данных')
-    def test_1(self):
-        page = self.page
+    def test_1(self, page):
         page.close_cookie_popup()
         page.use_top_order_button()
         page.fill_fields_1(page.firs_station_choise, page.street_address_1)
@@ -35,8 +27,7 @@ class TestOrder:
 
     @allure.description('Позитивный тест заказа со вторым набором данных')
     @allure.title('Второй набор данных')
-    def test_2(self):
-        page = self.page
+    def test_2(self, page):
         page.close_cookie_popup()
         page.use_bottom_order_button()
         page.fill_fields_1(page.second_station_choise, page.street_address_2)
