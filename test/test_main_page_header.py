@@ -7,8 +7,6 @@ from pages.main_page_header import Header
 @pytest.mark.parametrize('classname', [Header])
 class TestHeader:
 
-    driver = None
-
 
     @allure.description('Проверка редиректа по клику на логотип "Самокат"')
     @allure.title('Самокат logo')
