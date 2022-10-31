@@ -7,8 +7,6 @@ from pages.order_page import OrderPage
 @pytest.mark.parametrize('classname', [OrderPage])
 class TestOrder:
 
-    driver = None
-
 
     @allure.description('Позитивный тест заказа с первым набором данных')
     @allure.title('Первый набор данных')
