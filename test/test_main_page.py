@@ -6,7 +6,6 @@ from pages.main_page import MainPage
 @pytest.mark.usefixtures('driver', 'page')
 @pytest.mark.parametrize('classname', [MainPage])
 class TestDropdownList:
-    driver = None
 
 
     @allure.title("Проверка 'Сколько это стоит'")
